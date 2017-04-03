@@ -19,27 +19,28 @@
 #define MAX 51
 /* Function Prototypes */
 void Usage(void);
-void StringIn(char* str1[], char* str2[]);
+char* StringIn(char* str1, char* str2);
 /* Main Program */
 int main(int argc, char *argv[])
 {
 	
-	char* str1[MAX];
-	char* str2[MAX];
-	//int n;
-
-	*str1 = argv[1];
-	*str2 = argv[2];
+	char* strIn;
 	
-	if(argc == 3)
+	if(argc != 3 || (strcmp(argv[1], "--help") == 0))
 	{
-		printf("<%s> <%s> \n", *str1, *str2);
+		Usage(argv);
+	}
+	strIn = StringIn(argv[1], argv[2]);
+	
+	if(strIn)
+	{
+		printf("<%s> fond in <%s>\n", argv[2], argv[1]);
 	}
 	else
 	{
-		Usage();
-		exit(2);
+		printf("<%s> is not found in <%s>\n", argv[2], argv[1]);
 	}
+	printf("Returned string <%s>\n", strIn);
 	return 0;
 }
 
