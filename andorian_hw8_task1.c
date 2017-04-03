@@ -18,7 +18,7 @@
 
 #define MAX 51
 /* Function Prototypes */
-void Usage(void);
+void Usage(char** info);
 char* StringIn(char* str1, char* str2);
 /* Main Program */
 int main(int argc, char *argv[])
@@ -46,18 +46,27 @@ int main(int argc, char *argv[])
 
 
 /* Function Defenitions */
-void Usage(void)
+void Usage(char** info)
 {
- printf("Usage ./task1 <str1> <str2>\n");
- printf("Program checks if str2 is part of str1\n");
- exit(1);
+ 	printf("Usage ./task1 <str1> <str2>\n");
+ 	printf("Program checks if str2 is part of str1\n");
+ 	exit(1);
 
  return;
 }
 
-void StringIn(char* str1[], char* str2[])
+char* StringIn(char* str1, char* str2)
 {
-	
-	return;
+	int str2l = strlen(str2);
+	char* null = '\0';
+
+	do
+	{
+		if(strncmp(str2, str1, str2l) == 0)
+		{
+			null = str1;
+		}
+	}while (*str1++);
+	return null;
 }
 
